@@ -6,47 +6,47 @@
 using namespace testing;
 
 TEST(ClassThatUsesDBTest, OpenConnection) {
-    // Создаем мок-объект DBConnection
+    // РЎРѕР·РґР°РµРј РјРѕРє-РѕР±СЉРµРєС‚ DBConnection
     MockDBConnection dbConnection;
 
-    // Создаем экземпляр ClassThatUsesDB, передавая мок-объект в качестве зависимости
+    // РЎРѕР·РґР°РµРј СЌРєР·РµРјРїР»СЏСЂ ClassThatUsesDB, РїРµСЂРµРґР°РІР°СЏ РјРѕРє-РѕР±СЉРµРєС‚ РІ РєР°С‡РµСЃС‚РІРµ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё
     ClassThatUsesDB classThatUsesDB(dbConnection);
 
-    // Ожидаем вызов метода open с определенными аргументами и возвращаемым значением
+    // РћР¶РёРґР°РµРј РІС‹Р·РѕРІ РјРµС‚РѕРґР° open СЃ РѕРїСЂРµРґРµР»РµРЅРЅС‹РјРё Р°СЂРіСѓРјРµРЅС‚Р°РјРё Рё РІРѕР·РІСЂР°С‰Р°РµРјС‹Рј Р·РЅР°С‡РµРЅРёРµРј
     EXPECT_CALL(dbConnection, open())
         .WillOnce(Return(true));
 
-    // Вызываем метод openConnection и проверяем, что он вызывает соответствующий метод мок-объекта
+    // Р’С‹Р·С‹РІР°РµРј РјРµС‚РѕРґ openConnection Рё РїСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РѕРЅ РІС‹Р·С‹РІР°РµС‚ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РјРµС‚РѕРґ РјРѕРє-РѕР±СЉРµРєС‚Р°
     ASSERT_TRUE(classThatUsesDB.openConnection());
 }
 
 TEST(ClassThatUsesDBTest, UseConnection) {
-    // Создаем мок-объект DBConnection
+    // РЎРѕР·РґР°РµРј РјРѕРє-РѕР±СЉРµРєС‚ DBConnection
     MockDBConnection dbConnection;
 
-    // Создаем экземпляр ClassThatUsesDB, передавая мок-объект в качестве зависимости
+    // РЎРѕР·РґР°РµРј СЌРєР·РµРјРїР»СЏСЂ ClassThatUsesDB, РїРµСЂРµРґР°РІР°СЏ РјРѕРє-РѕР±СЉРµРєС‚ РІ РєР°С‡РµСЃС‚РІРµ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё
     ClassThatUsesDB classThatUsesDB(dbConnection);
 
-    // Ожидаем вызов метода execQuery с определенными аргументами и возвращаемым значением
+    // РћР¶РёРґР°РµРј РІС‹Р·РѕРІ РјРµС‚РѕРґР° execQuery СЃ РѕРїСЂРµРґРµР»РµРЅРЅС‹РјРё Р°СЂРіСѓРјРµРЅС‚Р°РјРё Рё РІРѕР·РІСЂР°С‰Р°РµРјС‹Рј Р·РЅР°С‡РµРЅРёРµРј
     EXPECT_CALL(dbConnection, execQuery("SELECT * FROM table"))
         .WillOnce(Return(true));
 
-    // Вызываем метод useConnection и проверяем, что он вызывает соответствующий метод мок-объекта
+    // Р’С‹Р·С‹РІР°РµРј РјРµС‚РѕРґ useConnection Рё РїСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РѕРЅ РІС‹Р·С‹РІР°РµС‚ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РјРµС‚РѕРґ РјРѕРє-РѕР±СЉРµРєС‚Р°
     ASSERT_TRUE(classThatUsesDB.useConnection("SELECT * FROM table"));
 }
 
 TEST(ClassThatUsesDBTest, CloseConnection) {
-    // Создаем мок-объект DBConnection
+    // РЎРѕР·РґР°РµРј РјРѕРє-РѕР±СЉРµРєС‚ DBConnection
     MockDBConnection dbConnection;
 
-    // Создаем экземпляр ClassThatUsesDB, передавая мок-объект в качестве зависимости
+    // РЎРѕР·РґР°РµРј СЌРєР·РµРјРїР»СЏСЂ ClassThatUsesDB, РїРµСЂРµРґР°РІР°СЏ РјРѕРє-РѕР±СЉРµРєС‚ РІ РєР°С‡РµСЃС‚РІРµ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё
     ClassThatUsesDB classThatUsesDB(dbConnection);
 
-    // Ожидаем вызов метода close с определенными аргументами и возвращаемым значением
+    // РћР¶РёРґР°РµРј РІС‹Р·РѕРІ РјРµС‚РѕРґР° close СЃ РѕРїСЂРµРґРµР»РµРЅРЅС‹РјРё Р°СЂРіСѓРјРµРЅС‚Р°РјРё Рё РІРѕР·РІСЂР°С‰Р°РµРјС‹Рј Р·РЅР°С‡РµРЅРёРµРј
     EXPECT_CALL(dbConnection, close())
         .WillOnce(Return(true));
 
-    // Вызываем метод closeConnection и проверяем, что он вызывает соответствующий метод мок-объекта
+    // Р’С‹Р·С‹РІР°РµРј РјРµС‚РѕРґ closeConnection Рё РїСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РѕРЅ РІС‹Р·С‹РІР°РµС‚ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РјРµС‚РѕРґ РјРѕРє-РѕР±СЉРµРєС‚Р°
     ASSERT_TRUE(classThatUsesDB.closeConnection());
 }
 
