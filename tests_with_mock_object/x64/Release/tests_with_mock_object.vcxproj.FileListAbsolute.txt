@@ -1,0 +1,2 @@
+D:\CPP Projects\Тестирование\Модуль 32. TDD (Gtest, Gmock)\tests_with_mock_object\x64\Release\tests_with_mock_object.exe
+D:\CPP Projects\Repositories\tests_with_mock_object\tests_with_mock_object\x64\Release\tests_with_mock_object.exe
